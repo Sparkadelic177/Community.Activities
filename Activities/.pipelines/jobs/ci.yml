@@ -17,17 +17,17 @@ jobs:
     demands: ${{ parameters.Demands }}
 
   steps:
-  - template: ".pipelines/steps/build.yml"
+  - template: "../steps/build.yml"
     parameters:
       BuildSolution: ${{ parameters.BuildSolution }}
       BuildConfiguration: ${{ parameters.BuildConfiguration }}
       BuildPlatform: ${{ parameters.BuildPlatform }}
 
-  - template: ".pipelines/steps/test.yml"
+  - template: "../steps/test.yml"
     parameters:
       BuildConfiguration: ${{ parameters.BuildConfiguration }}
       BuildPlatform: ${{ parameters.BuildPlatform }}
 
-  - template: ".pipelines/steps/package.yml"
+  - template: "../steps/package.yml"
     parameters:
       BuildConfiguration: ${{ parameters.BuildConfiguration }}
