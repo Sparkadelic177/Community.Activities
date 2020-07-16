@@ -7,7 +7,7 @@ steps:
   displayName: "Run unit tests"
   inputs:
     testAssemblyVer2: |
-          **\$(BuildConfiguration)\*test*.dll
+          **\${{ parameters.BuildConfiguration }}\*test*.dll
           !**\obj\**
     platform: ${{ parameters.BuildPlatform }}
     configuration: ${{ parameters.BuildConfiguration }}
