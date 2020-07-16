@@ -9,8 +9,8 @@ parameters:
   - vstest
 
 jobs:
-- job: Build_Publish_PD_Analyzer
-  displayName: "CI - PD Analyzer"
+- job: CI_Community_Activities
+  displayName: "CI - Community Activities"
 
   pool:
     vmImage: ${{ parameters.VmImage }}
