@@ -19,7 +19,7 @@ steps:
       $revision = [int]($now.TimeOfDay.TotalSeconds / 2) 
       $version = "$major.$minor.$build.$revision" 
       Write-Host "$version" 
-      Write-Host "##vso[build.updatebuildnumber]$version""
+      Write-Host "##vso[build.updatebuildnumber]$version"
 
 - task: NuGetToolInstaller@1
   displayName: "Use NuGet ${{ parameters.NuGetVersionSpec }}"
