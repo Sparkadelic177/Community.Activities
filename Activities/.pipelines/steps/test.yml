@@ -1,0 +1,13 @@
+parameters:
+  BuildConfiguration: "Release"
+  BuildPlatform: "Any CPU"
+
+steps:
+- task: VSTest@2
+  displayName: "Run unit tests"
+  inputs:
+    testAssemblyVer2: |
+          **\$(BuildConfiguration)\*test*.dll
+          !**\obj\**
+    platform: ${{ parameters.BuildPlatform }}
+    configuration: ${{ parameters.BuildConfiguration }}
