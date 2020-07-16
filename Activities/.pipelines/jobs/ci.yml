@@ -1,0 +1,33 @@
+parameters:
+  BuildSolution: "$(Build.SourcesDirectory)/Activities/Community.Activities.sln"
+  BuildConfiguration: "Release"
+  BuildPlatform: "Any CPU"
+  VmImage: "windows-latest"
+  Demands: 
+  - msbuild
+  - visualstudio
+  - vstest
+
+jobs:
+- job: Build_Publish_PD_Analyzer
+  displayName: "CI - PD Analyzer"
+
+  pool:
+    vmImage: ${{ parameters.VmImage }}
+    demands: ${{ parameters.Demands }}
+
+  steps:
+  - template: ".pipelines/steps/build.yml"
+    parameters:
+      BuildSolution: ${{ parameters.BuildSolution }}
+      BuildConfiguration: ${{ parameters.BuildConfiguration }}
+      BuildPlatform: ${{ parameters.BuildPlatform }}
+
+  - template: ".pipelines/steps/test.yml"
+    parameters:
+      BuildConfiguration: ${{ parameters.BuildConfiguration }}
+      BuildPlatform: ${{ parameters.BuildPlatform }}
+
+  - template: ".pipelines/steps/package.yml"
+    parameters:
+      BuildConfiguration: ${{ parameters.BuildConfiguration }}
