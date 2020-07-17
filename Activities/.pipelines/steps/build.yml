@@ -7,7 +7,7 @@ parameters:
   Dependencies: []
 
 steps:
-${{ each depend in parameters.Dependencies }}:
+- ${{ each depend in parameters.Dependencies }}:
   - task: NuGetCommand@2
     displayName: "Restore Nuget packages"
     inputs:
