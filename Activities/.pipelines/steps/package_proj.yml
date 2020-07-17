@@ -7,7 +7,7 @@ steps:
   inputs:
     scriptType: "inlineScript"
     inlineScript: |
-      $files = Get-ChildItem "$($ENV:BUILD_SOURCESDIRECTORY)\\Activities\\*.nuspec" -Recurse | foreach {$_.Name -replace '.nuspec','.csproj'} 
+      $files = Get-ChildItem "*.nuspec" -Recurse | foreach {$_.Name -replace '.nuspec','.csproj'} 
       $pattern = '' 
       ForEach($file in $files) { $pattern+="**\$file;" } 
       Write-Host "##vso[task.setvariable variable=PackagesToPack;]$pattern" 

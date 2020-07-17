@@ -29,13 +29,13 @@ steps:
 - task: NuGetCommand@2
   displayName: "Restore Nuget packages"
   inputs:
-    restoreSolution: ${{ parameters.BuildSolution }}
-    feedsToUse: "config"
-    nugetConfigPath: ${{ parameters.NuGetConfigPath }}
+    restoreSolution:  ${{ parameters.BuildSolution }}
+    feedsToUse:       "config"
+    nugetConfigPath:  ${{ parameters.NuGetConfigPath }}
 
 - task: VSBuild@1
   displayName: "Build Solution"
   inputs:
-    solution: ${{ parameters.BuildSolution }}
-    platform: ${{ parameters.BuildPlatform }}
-    configuration: ${{ parameters.BuildConfiguration }}
+    solution:       ${{ parameters.BuildSolution }}
+    platform:       ${{ parameters.BuildPlatform }}
+    configuration:  ${{ parameters.BuildConfiguration }}

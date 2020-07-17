@@ -1,0 +1,28 @@
+trigger: none
+
+pr: none
+
+jobs:
+  - template: "../.pipelines/jobs/ci_proj.yml"
+    parameters:
+      BuildSolution: "AutoHotkey.Interop/AutoHotkey.Interop.csproj"
+      BuildConfiguration: "Release"
+      BuildPlatform: "AnyCPU"
+
+  - template: "../.pipelines/jobs/ci_proj.yml"
+    parameters:
+      BuildSolution: "UiPath.Script/UiPath.Script.csproj"
+      BuildConfiguration: "Release"
+      BuildPlatform: "AnyCPU"
+      
+  - template: "../.pipelines/jobs/ci_proj.yml"
+    parameters:
+      BuildSolution: "UiPath.Script.Activities/UiPath.Script.Activities.csproj"
+      BuildConfiguration: "Release"
+      BuildPlatform: "AnyCPU"
+
+  - template: "../.pipelines/jobs/ci_proj.yml"
+    parameters:
+      BuildSolution: "UiPath.Script.Activities.Design/UiPath.Script.Activities.Design.csproj"
+      BuildConfiguration: "Release"
+      BuildPlatform: "AnyCPU"

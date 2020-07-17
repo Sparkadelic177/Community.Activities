@@ -28,6 +28,6 @@ jobs:
       BuildConfiguration: ${{ parameters.BuildConfiguration }}
       BuildPlatform:      ${{ parameters.BuildPlatform }}
 
-  - template: "../steps/package.yml"
+  - template: "../steps/package_proj.yml"
     parameters:
       BuildConfiguration: ${{ parameters.BuildConfiguration }}
