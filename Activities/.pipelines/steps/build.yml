@@ -6,26 +6,6 @@ parameters:
   NuGetConfigPath: "$(Build.SourcesDirectory)/Activities/.nuget/NuGet.Config"
 
 steps:
-- task: PowerShell@1
-  displayName: "Set Build Version"
-  inputs:
-    scriptType: "inlineScript"
-    inlineScript: |
-      $major = 1 
-      $minor = 0 
-      $now = Get-Date 
-      $y2k = Get-Date -Year 2000 -Month 1 -Day 1 
-      $build = [int]($now - $y2k).TotalDays 
-      $revision = [int]($now.TimeOfDay.TotalSeconds / 2) 
-      $version = "$major.$minor.$build.$revision" 
-      Write-Host "$version" 
-      Write-Host "##vso[build.updatebuildnumber]$version"
-
-- task: NuGetToolInstaller@1
-  displayName: "Use NuGet ${{ parameters.NuGetVersionSpec }}"
-  inputs:
-    versionSpec: ${{ parameters.NuGetVersionSpec }}
-
 - task: NuGetCommand@2
   displayName: "Restore Nuget packages"
   inputs:

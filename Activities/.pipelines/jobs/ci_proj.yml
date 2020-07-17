@@ -17,6 +17,8 @@ jobs:
     demands: ${{ parameters.Demands }}
 
   steps:
+  - template: "../steps/pre_build.yml"
+
   - template: "../steps/build.yml"
     parameters:
       BuildSolution:      ${{ parameters.BuildSolution }}
