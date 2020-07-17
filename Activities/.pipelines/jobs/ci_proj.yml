@@ -9,7 +9,7 @@ parameters:
   - vstest
 
 jobs:
-- job: CI_Community_Activities
+- job: |CI_Community_Activities_${{ parameters.BuildSolution }}"
   displayName: "CI - Community Activities"
 
   pool:
