@@ -8,6 +8,10 @@ jobs:
       BuildProject: "Activities/Script/UiPath.Script.Activities.Design/UiPath.Script.Activities.Design.csproj"
       BuildConfiguration: "Release"
       BuildPlatform: "AnyCPU"
+      restoreDependencies: 
+        - "Activities/Script/AutoHotkey.Interop/AutoHotkey.Interop.csproj"
+        - "Activities/Script/UiPath.Script/UiPath.Script.csproj"
+        - "Activities/Script/UiPath.Script.Activities/UiPath.Script.Activities.csproj"
       # Dependencies: 
       #   - "Activities/Script/AutoHotkey.Interop/AutoHotkey.Interop.csproj"
       #   - "Activities/Script/UiPath.Script/UiPath.Script.csproj"

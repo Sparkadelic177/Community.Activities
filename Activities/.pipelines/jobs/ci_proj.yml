@@ -8,6 +8,7 @@ parameters:
   - visualstudio
   - vstest
   Dependencies: []
+  restoreDependencies: []
 
 jobs:
 - job: CI_Community_Activities_${{ replace(replace(parameters.BuildProject, '/', '_'), '.', '_') }}
@@ -22,10 +23,11 @@ jobs:
 
   - template: "../steps/build.yml"
     parameters:
-      BuildProject:      ${{ parameters.BuildProject }}
-      BuildConfiguration: ${{ parameters.BuildConfiguration }}
-      BuildPlatform:      ${{ parameters.BuildPlatform }}
-      Dependencies:       ${{ parameters.Dependencies }}
+      BuildProject:         ${{ parameters.BuildProject }}
+      BuildConfiguration:   ${{ parameters.BuildConfiguration }}
+      BuildPlatform:        ${{ parameters.BuildPlatform }}
+      Dependencies:         ${{ parameters.Dependencies }}
+      restoreDependencies:  ${{ parameters.restoreDependencies }}
 
   - template: "../steps/test.yml"
     parameters:
