@@ -8,18 +8,18 @@ parameters:
 
 steps:
 ${{ each depend in parameters.Dependencies }}:
-- task: NuGetCommand@2
-  displayName: "Restore Nuget packages"
-  inputs:
-    restoreSolution:  $(Build.SourcesDirectory)/${{ depend }}
-    feedsToUse:       "config"
-    nugetConfigPath:  ${{ parameters.NuGetConfigPath }}
-- task: VSBuild@1
-  displayName: "Build Solution"
-  inputs:
-    solution:       $(Build.SourcesDirectory)/${{ depend }}
-    platform:       ${{ parameters.BuildPlatform }}
-    configuration:  ${{ parameters.BuildConfiguration }}
+  - task: NuGetCommand@2
+    displayName: "Restore Nuget packages"
+    inputs:
+      restoreSolution:  $(Build.SourcesDirectory)/${{ depend }}
+      feedsToUse:       "config"
+      nugetConfigPath:  ${{ parameters.NuGetConfigPath }}
+  - task: VSBuild@1
+    displayName: "Build Solution"
+    inputs:
+      solution:       $(Build.SourcesDirectory)/${{ depend }}
+      platform:       ${{ parameters.BuildPlatform }}
+      configuration:  ${{ parameters.BuildConfiguration }}
 
 - task: NuGetCommand@2
   displayName: "Restore Nuget packages"
