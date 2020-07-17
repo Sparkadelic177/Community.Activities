@@ -1,5 +1,5 @@
 parameters:
-  BuildSolution: "$(Build.SourcesDirectory)/Activities/Community.Activities.sln"
+  BuildProject: "$(Build.SourcesDirectory)/Activities/Community.Activities.sln"
   BuildConfiguration: "Release"
   BuildPlatform: "Any CPU"
   VmImage: "windows-latest"
@@ -7,10 +7,11 @@ parameters:
   - msbuild
   - visualstudio
   - vstest
+  Dependencies: []
 
 jobs:
-- job: CI_Community_Activities_${{ replace(replace(parameters.BuildSolution, '/', '_'), '.', '_') }}
-  displayName: ${{ replace(replace(parameters.BuildSolution, '/', '_'), '.', '_') }}
+- job: CI_Community_Activities_${{ replace(replace(parameters.BuildProject, '/', '_'), '.', '_') }}
+  displayName: ${{ replace(replace(parameters.BuildProject, '/', '_'), '.', '_') }}
 
   pool:
     vmImage: ${{ parameters.VmImage }}
@@ -21,9 +22,10 @@ jobs:
 
   - template: "../steps/build.yml"
     parameters:
-      BuildSolution:      ${{ parameters.BuildSolution }}
+      BuildProject:      ${{ parameters.BuildProject }}
       BuildConfiguration: ${{ parameters.BuildConfiguration }}
       BuildPlatform:      ${{ parameters.BuildPlatform }}
+      Dependencies:       ${{ parameters.Dependencies }}
 
   - template: "../steps/test.yml"
     parameters:
@@ -32,4 +34,5 @@ jobs:
 
   - template: "../steps/package_proj.yml"
     parameters:
+      BuildProject:       ${{ parameters.BuildProject }}
       BuildConfiguration: ${{ parameters.BuildConfiguration }}

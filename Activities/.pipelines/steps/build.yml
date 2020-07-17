@@ -1,21 +1,35 @@
 parameters:
-  BuildSolution: "$(Build.SourcesDirectory)/Activities/Community.Activities.sln"
+  BuildProject: ""
   BuildConfiguration: "Release"
   BuildPlatform: "Any CPU"
   NuGetVersionSpec: "4.3.0"
   NuGetConfigPath: "$(Build.SourcesDirectory)/Activities/.nuget/NuGet.Config"
+  Dependencies: []
 
 steps:
+${{ each depend in parameters.Dependencies }}:
 - task: NuGetCommand@2
   displayName: "Restore Nuget packages"
   inputs:
-    restoreSolution:  ${{ parameters.BuildSolution }}
+    restoreSolution:  $(Build.SourcesDirectory)/${{ depend }}
     feedsToUse:       "config"
     nugetConfigPath:  ${{ parameters.NuGetConfigPath }}
-
 - task: VSBuild@1
   displayName: "Build Solution"
   inputs:
-    solution:       ${{ parameters.BuildSolution }}
+    solution:       $(Build.SourcesDirectory)/${{ depend }}
+    platform:       ${{ parameters.BuildPlatform }}
+    configuration:  ${{ parameters.BuildConfiguration }}
+
+- task: NuGetCommand@2
+  displayName: "Restore Nuget packages"
+  inputs:
+    restoreSolution:  $(Build.SourcesDirectory)/${{ parameters.BuildProject }}
+    feedsToUse:       "config"
+    nugetConfigPath:  ${{ parameters.NuGetConfigPath }}
+- task: VSBuild@1
+  displayName: "Build Solution"
+  inputs:
+    solution:       $(Build.SourcesDirectory)/${{ parameters.BuildProject }}
     platform:       ${{ parameters.BuildPlatform }}
     configuration:  ${{ parameters.BuildConfiguration }}

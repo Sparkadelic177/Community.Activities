@@ -5,24 +5,11 @@ pr: none
 jobs:
   - template: "../.pipelines/jobs/ci_proj.yml"
     parameters:
-      BuildSolution: "AutoHotkey.Interop/AutoHotkey.Interop.csproj"
+      BuildProject: "Activities/Script/UiPath.Script.Activities.Design/UiPath.Script.Activities.Design.csproj"
       BuildConfiguration: "Release"
       BuildPlatform: "AnyCPU"
+      # Dependencies: 
+      #   - "Activities/Script/AutoHotkey.Interop/AutoHotkey.Interop.csproj"
+      #   - "Activities/Script/UiPath.Script/UiPath.Script.csproj"
+      #   - "Activities/Script/UiPath.Script.Activities/UiPath.Script.Activities.csproj"
 
-  - template: "../.pipelines/jobs/ci_proj.yml"
-    parameters:
-      BuildSolution: "UiPath.Script/UiPath.Script.csproj"
-      BuildConfiguration: "Release"
-      BuildPlatform: "AnyCPU"
-      
-  - template: "../.pipelines/jobs/ci_proj.yml"
-    parameters:
-      BuildSolution: "UiPath.Script.Activities/UiPath.Script.Activities.csproj"
-      BuildConfiguration: "Release"
-      BuildPlatform: "AnyCPU"
-
-  - template: "../.pipelines/jobs/ci_proj.yml"
-    parameters:
-      BuildSolution: "UiPath.Script.Activities.Design/UiPath.Script.Activities.Design.csproj"
-      BuildConfiguration: "Release"
-      BuildPlatform: "AnyCPU"
