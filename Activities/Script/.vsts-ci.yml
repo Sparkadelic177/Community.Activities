@@ -5,13 +5,14 @@ pr: none
 jobs:
   - template: "../.pipelines/jobs/ci_proj.yml"
     parameters:
-      BuildProject: "Activities/Script/UiPath.Script.Activities.Design/UiPath.Script.Activities.Design.csproj"
+      BuildProject: "UiPath.Script.Activities.Design/UiPath.Script.Activities.Design.csproj"
       BuildConfiguration: "Release"
       BuildPlatform: "AnyCPU"
+      rootPath: $(Build.SourcesDirectory)/Activities/Script/
       restoreDependencies: 
-        - "Activities/Script/AutoHotkey.Interop/AutoHotkey.Interop.csproj"
-        - "Activities/Script/UiPath.Script/UiPath.Script.csproj"
-        - "Activities/Script/UiPath.Script.Activities/UiPath.Script.Activities.csproj"
+        - "AutoHotkey.Interop/AutoHotkey.Interop.csproj"
+        - "UiPath.Script/UiPath.Script.csproj"
+        - "UiPath.Script.Activities/UiPath.Script.Activities.csproj"
       # Dependencies: 
       #   - "Activities/Script/AutoHotkey.Interop/AutoHotkey.Interop.csproj"
       #   - "Activities/Script/UiPath.Script/UiPath.Script.csproj"

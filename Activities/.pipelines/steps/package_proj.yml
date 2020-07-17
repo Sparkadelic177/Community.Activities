@@ -1,6 +1,7 @@
 parameters:
   BuildProject:       ""
   BuildConfiguration: "Release"
+  rootPath: $(Build.SourcesDirectory)
 
 steps:
 
@@ -8,13 +9,12 @@ steps:
   displayName: "Create Nuget packages"
   inputs:
     command: "pack"
-    packagesToPack: $(Build.SourcesDirectory)/${{ parameters.BuildProject }}
+    packagesToPack: ${{ format('{0}{1}', parameters.rootPath, parameters.BuildProject) }}
     versioningScheme: "byBuildNumber"
     includeSymbols: "true"
     outputDir: "$(Build.ArtifactStagingDirectory)"
     configurationToPack: ${{ parameters.BuildConfiguration }}
     includeReferencedProjects: "true"
-    restoreDirectory: $(Build.SourcesDirectory)/packages/
 - task: PublishBuildArtifacts@1
   displayName: "Publish symbols"
   inputs:

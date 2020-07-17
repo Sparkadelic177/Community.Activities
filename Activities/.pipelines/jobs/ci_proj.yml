@@ -9,6 +9,7 @@ parameters:
   - vstest
   Dependencies: []
   restoreDependencies: []
+  rootPath: $(Build.SourcesDirectory)
 
 jobs:
 - job: CI_Community_Activities_${{ replace(replace(parameters.BuildProject, '/', '_'), '.', '_') }}
@@ -28,13 +29,16 @@ jobs:
       BuildPlatform:        ${{ parameters.BuildPlatform }}
       Dependencies:         ${{ parameters.Dependencies }}
       restoreDependencies:  ${{ parameters.restoreDependencies }}
+      rootPath:             ${{ parameters.rootPath }}
 
   - template: "../steps/test.yml"
     parameters:
       BuildConfiguration: ${{ parameters.BuildConfiguration }}
       BuildPlatform:      ${{ parameters.BuildPlatform }}
+      rootPath:           ${{ parameters.rootPath }}
 
   - template: "../steps/package_proj.yml"
     parameters:
       BuildProject:       ${{ parameters.BuildProject }}
       BuildConfiguration: ${{ parameters.BuildConfiguration }}
+      rootPath:           ${{ parameters.rootPath }}

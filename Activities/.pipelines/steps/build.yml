@@ -6,16 +6,17 @@ parameters:
   NuGetConfigPath: "$(Build.SourcesDirectory)/Activities/.nuget/NuGet.Config"
   Dependencies: []
   restoreDependencies: []
+  rootPath: $(Build.SourcesDirectory)
 
 steps:
 - ${{ each depend in parameters.restoreDependencies }}:
   - task: NuGetCommand@2
     displayName: "Restore Nuget packages"
     inputs:
-      restoreSolution:  $(Build.SourcesDirectory)/${{ depend }}
+      restoreSolution:  ${{ format('{0}{1}', parameters.rootPath, parameters.depend) }}
       feedsToUse:       "config"
       nugetConfigPath:  ${{ parameters.NuGetConfigPath }}
-      restoreDirectory: $(Build.SourcesDirectory)/packages/
+      restoreDirectory: ${{ parameters.rootPath }}packages/
   # - task: VSBuild@1
   #   displayName: "Build Solution"
   #   inputs:
@@ -26,13 +27,13 @@ steps:
 - task: NuGetCommand@2
   displayName: "Restore Nuget packages"
   inputs:
-    restoreSolution:  $(Build.SourcesDirectory)/${{ parameters.BuildProject }}
+    restoreSolution:  ${{ format('{0}{1}', parameters.rootPath, parameters.BuildProject) }}
     feedsToUse:       "config"
     nugetConfigPath:  ${{ parameters.NuGetConfigPath }}
-    restoreDirectory: $(Build.SourcesDirectory)/packages/
+    restoreDirectory: ${{ parameters.rootPath }}packages/
 - task: VSBuild@1
   displayName: "Build Solution"
   inputs:
-    solution:       $(Build.SourcesDirectory)/${{ parameters.BuildProject }}
+    solution:       ${{ format('{0}{1}', parameters.rootPath, parameters.BuildProject) }}
     platform:       ${{ parameters.BuildPlatform }}
     configuration:  ${{ parameters.BuildConfiguration }}
