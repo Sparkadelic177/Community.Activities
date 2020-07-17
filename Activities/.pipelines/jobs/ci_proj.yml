@@ -9,8 +9,8 @@ parameters:
   - vstest
 
 jobs:
-- job: CI_Community_Activities_${{ replace('parameters.BuildSolution', '/', '_') }}
-  displayName: "CI - Community Activities"
+- job: CI_Community_Activities_${{ replace(replace('parameters.BuildSolution', '/', '_'), '.', '_') }}
+  displayName: ${{ replace(replace('parameters.BuildSolution', '/', '_'), '.', '_') }}
 
   pool:
     vmImage: ${{ parameters.VmImage }}
