@@ -11,7 +11,7 @@ parameters:
 steps:
 - ${{ each depend in parameters.restoreDependencies }}:
   - task: NuGetCommand@2
-    displayName: "Restore Nuget packages"
+    displayName: "Restore Nuget packages ${{ depend }}"
     inputs:
       restoreSolution:  ${{ format('{0}{1}', parameters.rootPath, depend) }}
       feedsToUse:       "config"
