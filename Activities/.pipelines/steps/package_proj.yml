@@ -26,16 +26,6 @@ steps:
     outputDir: "$(Build.ArtifactStagingDirectory)"
     configurationToPack: ${{ parameters.BuildConfiguration }}
     includeReferencedProjects: "true"
-# - task: NuGetCommand@2
-#   displayName: "Create Nuget packages ${{ parameters.BuildProject }}"
-#   inputs:
-#     command: "pack"
-#     packagesToPack: ${{ format('{0}{1}', parameters.rootPath, parameters.BuildProject) }}
-#     versioningScheme: "byBuildNumber"
-#     includeSymbols: "true"
-#     outputDir: "$(Build.ArtifactStagingDirectory)"
-#     configurationToPack: ${{ parameters.BuildConfiguration }}
-#     includeReferencedProjects: "true"
 - task: PublishBuildArtifacts@1
   displayName: "Publish symbols"
   inputs:

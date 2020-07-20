@@ -9,6 +9,7 @@ jobs:
       BuildConfiguration: "Release"
       BuildPlatform: "AnyCPU"
       rootPath: $(Build.SourcesDirectory)/Activities/Script/
+      packagesDirectory: $(Build.SourcesDirectory)/Activities/packages/
       restoreDependencies: 
         - "AutoHotkey.Interop/AutoHotkey.Interop.csproj"
         - "UiPath.Script/UiPath.Script.csproj"

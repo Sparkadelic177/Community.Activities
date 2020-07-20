@@ -10,6 +10,7 @@ parameters:
   Dependencies: []
   restoreDependencies: []
   rootPath: $(Build.SourcesDirectory)
+  packagesDirectory: $(Build.SourcesDirectory)/packages/
 
 jobs:
 - job: CI_Community_Activities_${{ replace(replace(parameters.BuildProject, '/', '_'), '.', '_') }}
@@ -30,6 +31,7 @@ jobs:
       Dependencies:         ${{ parameters.Dependencies }}
       restoreDependencies:  ${{ parameters.restoreDependencies }}
       rootPath:             ${{ parameters.rootPath }}
+      packagesDirectory:    ${{ parameters.packagesDirectory }}
 
   - template: "../steps/test.yml"
     parameters:
