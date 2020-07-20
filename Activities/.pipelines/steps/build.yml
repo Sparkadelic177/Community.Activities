@@ -18,21 +18,21 @@ steps:
       nugetConfigPath:  ${{ parameters.NuGetConfigPath }}
       restoreDirectory: ${{ parameters.rootPath }}packages/
   # - task: VSBuild@1
-  #   displayName: "Build Solution"
+  #   displayName: "Build Solution ${{ depend }}"
   #   inputs:
   #     solution:       $(Build.SourcesDirectory)/${{ depend }}
   #     platform:       ${{ parameters.BuildPlatform }}
   #     configuration:  ${{ parameters.BuildConfiguration }}
 
 - task: NuGetCommand@2
-  displayName: "Restore Nuget packages"
+  displayName: "Restore Nuget packages ${{ parameters.BuildProject }}"
   inputs:
     restoreSolution:  ${{ format('{0}{1}', parameters.rootPath, parameters.BuildProject) }}
     feedsToUse:       "config"
     nugetConfigPath:  ${{ parameters.NuGetConfigPath }}
     restoreDirectory: ${{ parameters.rootPath }}packages/
 - task: VSBuild@1
-  displayName: "Build Solution"
+  displayName: "Build Solution ${{ parameters.BuildProject }}"
   inputs:
     solution:       ${{ format('{0}{1}', parameters.rootPath, parameters.BuildProject) }}
     platform:       ${{ parameters.BuildPlatform }}
