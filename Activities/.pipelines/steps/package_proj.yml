@@ -4,7 +4,6 @@ parameters:
   rootPath: $(Build.SourcesDirectory)
 
 steps:
-
 - task: NuGetCommand@2
   displayName: "Create Nuget packages ${{ parameters.BuildProject }}"
   inputs:
@@ -15,7 +14,6 @@ steps:
     outputDir: "$(Build.ArtifactStagingDirectory)"
     configurationToPack: ${{ parameters.BuildConfiguration }}
     includeReferencedProjects: "true"
-    restoreDirectory: ${{ parameters.rootPath }}packages/
 - task: PublishBuildArtifacts@1
   displayName: "Publish symbols"
   inputs:
