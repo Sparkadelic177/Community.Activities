@@ -15,6 +15,7 @@ steps:
     outputDir: "$(Build.ArtifactStagingDirectory)"
     configurationToPack: ${{ parameters.BuildConfiguration }}
     includeReferencedProjects: "true"
+    restoreDirectory: ${{ parameters.rootPath }}packages/
 - task: PublishBuildArtifacts@1
   displayName: "Publish symbols"
   inputs:
