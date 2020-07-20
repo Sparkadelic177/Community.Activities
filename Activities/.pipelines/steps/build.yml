@@ -13,7 +13,7 @@ steps:
   - task: NuGetCommand@2
     displayName: "Restore Nuget packages"
     inputs:
-      restoreSolution:  ${{ format('{0}{1}', parameters.rootPath, parameters.depend) }}
+      restoreSolution:  ${{ format('{0}{1}', parameters.rootPath, depend) }}
       feedsToUse:       "config"
       nugetConfigPath:  ${{ parameters.NuGetConfigPath }}
       restoreDirectory: ${{ parameters.rootPath }}packages/
