@@ -10,10 +10,8 @@ steps:
     scriptType: "inlineScript"
     inlineScript: |
       Write-Output $ENV:BUILD_SOURCESDIRECTORY
-      Write-Output $($ENV:BUILD_SOURCESDIRECTORY)
-      $files = Get-ChildItem "$($ENV:BUILD_SOURCESDIRECTORY)\\Activities\\*.nuspec" -Recurse | foreach {$_.Name -replace '.nuspec','.csproj'} 
       Write-Output $files
-      $files = Get-ChildItem "$(Build.SourcesDirectory)\*.nuspec" -Recurse | foreach {$_.Name -replace '.nuspec','.csproj'} 
+      $files = Get-ChildItem "${{ parameters.rootPath }}\\*.nuspec" -Recurse | foreach {$_.Name -replace '.nuspec','.csproj'} 
       Write-Output $files
       $pattern = '' 
       ForEach($file in $files) { $pattern+="**\$file;" } 
