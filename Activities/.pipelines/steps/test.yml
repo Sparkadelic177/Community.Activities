@@ -1,7 +1,9 @@
 parameters:
   BuildConfiguration: "Release"
   BuildPlatform: "Any CPU"
-  rootPath: $(Build.SourcesDirectory)
+  rootPath: $(Build.SourcesDirectory)  
+  NuGetConfigPath: "$(Build.SourcesDirectory)/Activities/.nuget/NuGet.Config"
+  packagesDirectory: ""
   testList: []
 
 steps:

@@ -38,7 +38,8 @@ jobs:
     parameters:
       BuildConfiguration: ${{ parameters.BuildConfiguration }}
       BuildPlatform:      ${{ parameters.BuildPlatform }}
-      rootPath:           ${{ parameters.rootPath }}
+      rootPath:           ${{ parameters.rootPath }}      
+      packagesDirectory:  ${{ parameters.packagesDirectory }}
       testList:           ${{ parameters.testList }}
 
   - template: "../steps/package_proj.yml"
