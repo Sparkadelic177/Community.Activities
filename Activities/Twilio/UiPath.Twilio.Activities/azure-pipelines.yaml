@@ -3,7 +3,7 @@ trigger: none
 pr: none
 
 jobs:
-  - template: "../.pipelines/jobs/ci_proj.yml"
+  - template: "../../.pipelines/jobs/ci_proj.yml"
     parameters:
       BuildProject: "UiPath.Twilio.Activities/UiPath.Twilio.Activities.csproj"
       BuildConfiguration: "Release"
