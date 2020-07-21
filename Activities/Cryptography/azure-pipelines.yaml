@@ -1,0 +1,20 @@
+trigger: none
+
+pr: none
+
+jobs:
+  - template: "../.pipelines/jobs/ci_proj.yml"
+    parameters:
+      BuildProject: "UiPath.Cryptography.Activities.Design/UiPath.Cryptography.Activities.Design.csproj"
+      BuildConfiguration: "Release"
+      BuildPlatform: "AnyCPU"
+      rootPath: $(Build.SourcesDirectory)/Activities/Cryptography/
+      packagesDirectory: $(Build.SourcesDirectory)/Activities/packages/
+      restoreDependencies: 
+        - "AutoHotkey.Interop/AutoHotkey.Interop.csproj"
+        - "UiPath.Cryptography/UiPath.Cryptography.csproj"
+        - "UiPath.Cryptography.Activities/UiPath.Cryptography.Activities.csproj"
+      # Dependencies: 
+      #   - "Activities/Script/AutoHotkey.Interop/AutoHotkey.Interop.csproj"
+      #   - "Activities/Script/UiPath.Script/UiPath.Script.csproj"
+      #   - "Activities/Script/UiPath.Script.Activities/UiPath.Script.Activities.csproj"
