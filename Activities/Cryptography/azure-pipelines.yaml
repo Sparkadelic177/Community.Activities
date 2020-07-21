@@ -11,7 +11,6 @@ jobs:
       rootPath: $(Build.SourcesDirectory)/Activities/Cryptography/
       packagesDirectory: $(Build.SourcesDirectory)/Activities/packages/
       restoreDependencies: 
-        - "AutoHotkey.Interop/AutoHotkey.Interop.csproj"
         - "UiPath.Cryptography/UiPath.Cryptography.csproj"
         - "UiPath.Cryptography.Activities/UiPath.Cryptography.Activities.csproj"
       # Dependencies: 
