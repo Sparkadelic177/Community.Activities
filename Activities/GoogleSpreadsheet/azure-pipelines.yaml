@@ -8,7 +8,7 @@ jobs:
       BuildProject: "GoogleSpreadsheet.Activities.Design/GoogleSpreadsheet.Activities.Design.csproj"
       BuildConfiguration: "Release"
       BuildPlatform: "AnyCPU"
-      rootPath: $(Build.SourcesDirectory)\\Activities\\Google Spreadsheet\\
+      rootPath: $(Build.SourcesDirectory)\\Activities\\GoogleSpreadsheet\\
       packagesDirectory: $(Build.SourcesDirectory)\\Activities\\packages\\
       restoreDependencies: 
         - "GoogleSpreadsheet/GoogleSpreadsheet.csproj"
