@@ -8,5 +8,5 @@ jobs:
       BuildProject: "UiPath.Twilio.Activities/UiPath.Twilio.Activities.csproj"
       BuildConfiguration: "Release"
       BuildPlatform: "AnyCPU"
-      rootPath: $(Build.SourcesDirectory)\\Activities\\Twilio\\
-      packagesDirectory: $(Build.SourcesDirectory)\\Activities\\packages\\
+      rootPath: $(Build.SourcesDirectory)\Activities\Twilio\
+      packagesDirectory: $(Build.SourcesDirectory)\Activities\packages\

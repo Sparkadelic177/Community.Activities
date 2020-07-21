@@ -26,7 +26,7 @@ steps:
   displayName: "Run tests"
   inputs:
     testAssemblyVer2: |
-          ${{ parameters.rootPath }}\**\${{ parameters.BuildConfiguration }}\*test*.dll
+          ${{ parameters.rootPath }}**\${{ parameters.BuildConfiguration }}\*test*.dll
           !**\obj\**
     platform: ${{ parameters.BuildPlatform }}
     configuration: ${{ parameters.BuildConfiguration }}
