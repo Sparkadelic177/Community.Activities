@@ -18,7 +18,7 @@ steps:
   - task: VSBuild@1
     displayName: "Build Solution ${{ test }}"
     inputs:
-      solution:       $(Build.SourcesDirectory)/${{ test }}
+      solution:       ${{ format('{0}{1}', parameters.rootPath, test) }}
       platform:       ${{ parameters.BuildPlatform }}
       configuration:  ${{ parameters.BuildConfiguration }}
 
