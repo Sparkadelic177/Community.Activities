@@ -15,6 +15,4 @@ jobs:
         - "UiPath.Cryptography/UiPath.Cryptography.csproj"
         - "UiPath.Cryptography.Activities/UiPath.Cryptography.Activities.csproj"
       # Dependencies: 
-      #   - "Activities/Script/AutoHotkey.Interop/AutoHotkey.Interop.csproj"
-      #   - "Activities/Script/UiPath.Script/UiPath.Script.csproj"
-      #   - "Activities/Script/UiPath.Script.Activities/UiPath.Script.Activities.csproj"
+      #   - "Tools/localization_utilities/synchronize_localization.py"
