@@ -2,8 +2,24 @@ parameters:
   BuildConfiguration: "Release"
   BuildPlatform: "Any CPU"
   rootPath: $(Build.SourcesDirectory)
+  testList: []
 
 steps:
+- ${{ each test in parameters.testList }}:
+  - task: NuGetCommand@2
+    displayName: "Restore Nuget packages ${{ test }}"
+    inputs:
+      restoreSolution:    ${{ format('{0}{1}', parameters.rootPath, test) }}
+      feedsToUse:         "config"
+      nugetConfigPath:    ${{ parameters.NuGetConfigPath }}
+      packagesdirectory:  ${{ parameters.packagesDirectory }}
+  - task: VSBuild@1
+    displayName: "Build Solution ${{ test }}"
+    inputs:
+      solution:       $(Build.SourcesDirectory)/${{ test }}
+      platform:       ${{ parameters.BuildPlatform }}
+      configuration:  ${{ parameters.BuildConfiguration }}
+
 - task: VSTest@2
   displayName: "Run unit tests"
   inputs:
