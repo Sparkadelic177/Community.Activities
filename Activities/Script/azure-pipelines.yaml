@@ -8,14 +8,10 @@ jobs:
       BuildProject: "UiPath.Script.Activities.Design/UiPath.Script.Activities.Design.csproj"
       BuildConfiguration: "Release"
       BuildPlatform: "AnyCPU"
-      rootPath: $(Build.SourcesDirectory)/Activities/Script/
-      packagesDirectory: $(Build.SourcesDirectory)/Activities/packages/
+      rootPath: $(Build.SourcesDirectory)\Activities\Script\
+      packagesDirectory: $(Build.SourcesDirectory)\Activities\packages\
       restoreDependencies: 
         - "AutoHotkey.Interop/AutoHotkey.Interop.csproj"
         - "UiPath.Script/UiPath.Script.csproj"
         - "UiPath.Script.Activities/UiPath.Script.Activities.csproj"
-      # Dependencies: 
-      #   - "Activities/Script/AutoHotkey.Interop/AutoHotkey.Interop.csproj"
-      #   - "Activities/Script/UiPath.Script/UiPath.Script.csproj"
-      #   - "Activities/Script/UiPath.Script.Activities/UiPath.Script.Activities.csproj"
 

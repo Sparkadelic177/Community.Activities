@@ -8,8 +8,8 @@ jobs:
       BuildProject: "UiPath.Cryptography.Activities.Design/UiPath.Cryptography.Activities.Design.csproj"
       BuildConfiguration: "Release"
       BuildPlatform: "AnyCPU"
-      rootPath: $(Build.SourcesDirectory)\\Activities\\Cryptography\\
-      packagesDirectory: $(Build.SourcesDirectory)/Activities/packages/
+      rootPath: $(Build.SourcesDirectory)\Activities\Cryptography\
+      packagesDirectory: $(Build.SourcesDirectory)\Activities\packages\
       restoreDependencies: 
         - "UiPath.Cryptography/UiPath.Cryptography.csproj"
         - "UiPath.Cryptography.Activities/UiPath.Cryptography.Activities.csproj"
