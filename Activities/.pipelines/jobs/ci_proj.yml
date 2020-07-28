@@ -12,6 +12,7 @@ parameters:
   rootPath: $(Build.SourcesDirectory)
   packagesDirectory: $(Build.SourcesDirectory)/packages/
   testList: []
+  versionReference: ""
 
 jobs:
 - job: CI_Community_Activities_${{ replace(replace(parameters.BuildProject, '/', '_'), '.', '_') }}
@@ -23,6 +24,8 @@ jobs:
 
   steps:
   - template: "../steps/pre_build.yml"
+    parameters:
+      BuildProject: ${{ parameters.versionReference }}
 
   - template: "../steps/build.yml"
     parameters:

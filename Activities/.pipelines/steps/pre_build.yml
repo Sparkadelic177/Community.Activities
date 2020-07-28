@@ -1,5 +1,6 @@
 parameters:
   NuGetVersionSpec: "4.3.0"
+  versionReference: ""
 
 steps:
 - task: PowerShell@1
@@ -7,8 +8,10 @@ steps:
   inputs:
     scriptType: "inlineScript"
     inlineScript: |
-      $major = 1 
-      $minor = 0 
+      $vers = cat ${{ parameters.versionReference }}"|Select-String -Pattern AssemblyVersion|Select-String -NotMatch "^//.*AssemblyVersion"
+      Write-Output $vers
+      $major = $vers.Line.split("(").split(".")[1] -replace '"','' 
+      $minor = $vers.Line.split("(").split(".")[2] 
       $now = Get-Date 
       $y2k = Get-Date -Year 2000 -Month 1 -Day 1 
       $build = [int]($now - $y2k).TotalDays 
