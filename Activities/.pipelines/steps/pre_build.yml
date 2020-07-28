@@ -8,10 +8,15 @@ steps:
   inputs:
     scriptType: "inlineScript"
     inlineScript: |
-      $vers = cat ${{ parameters.versionReference }}"|Select-String -Pattern AssemblyVersion|Select-String -NotMatch "^//.*AssemblyVersion"
-      Write-Output $vers
-      $major = $vers.Line.split("(").split(".")[1].replace('"','')
-      $minor = $vers.Line.split("(").split(".")[2] 
+      if (-not (Test-Path -Path  ${{ parameters.versionReference }} )) {
+          $major = 1
+          $minor = 0
+      } else {
+        $vers = cat ${{ parameters.versionReference }}|Select-String -Pattern AssemblyVersion|Select-String -NotMatch "^//.*AssemblyVersion"
+        Write-Output $vers
+        $major = $vers.Line.split("(").split(".")[1].replace('"','')
+        $minor = $vers.Line.split("(").split(".")[2] 
+      }
       $now = Get-Date 
       $y2k = Get-Date -Year 2000 -Month 1 -Day 1 
       $build = [int]($now - $y2k).TotalDays 
@@ -19,6 +24,7 @@ steps:
       $version = "$major.$minor.$build.$revision" 
       Write-Host "$version" 
       Write-Host "##vso[build.updatebuildnumber]$version"
+
 - task: NuGetToolInstaller@1
   displayName: "Use NuGet ${{ parameters.NuGetVersionSpec }}"
   inputs:
