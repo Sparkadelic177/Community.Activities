@@ -15,3 +15,4 @@ jobs:
         - "UiPath.Python.Activitiess/UiPath.Python.Activities.csproj"
       testList: 
         - "UiPath.Python.Tests/UiPath.Python.Tests.csproj"
+      versionReference: "PythonPackageVersion.cs"

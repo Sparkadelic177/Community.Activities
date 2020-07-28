@@ -14,4 +14,5 @@ jobs:
         - "GoogleSpreadsheet/GoogleSpreadsheet.csproj"
         - "GoogleSpreadsheet.Activities/GoogleSpreadsheet.Activities.csproj"
       testList: 
-        - "GoogleSpreadsheet.Activities.UnitTest/GoogleSpreadsheet.Activities.UnitTest.csproj"
+        - "GoogleSpreadsheet.Activities.UnitTest/GoogleSpreadsheet.Activities.UnitTest.csproj"      
+      versionReference: "GoogleSpreadsheetVersion.cs"

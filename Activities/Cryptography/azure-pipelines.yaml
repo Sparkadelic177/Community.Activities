@@ -14,4 +14,5 @@ jobs:
         - "UiPath.Cryptography/UiPath.Cryptography.csproj"
         - "UiPath.Cryptography.Activities/UiPath.Cryptography.Activities.csproj"
       testList: 
-        - "UiPath.Cryptography.Activities.Tests/UiPath.Cryptography.Activities.Tests.csproj"
+        - "UiPath.Cryptography.Activities.Tests/UiPath.Cryptography.Activities.Tests.csproj"        
+      versionReference: "CryptographyAssemblyInfo.cs"

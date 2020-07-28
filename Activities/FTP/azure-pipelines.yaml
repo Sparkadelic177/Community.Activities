@@ -12,4 +12,5 @@ jobs:
       packagesDirectory: $(Build.SourcesDirectory)\Activities\packages\
       restoreDependencies: 
         - "UiPath.FTP.Activities/UiPath.FTP.Activities.csproj"
-        - "UiPath.FTP/UiPath.FTP.csproj"
+        - "UiPath.FTP/UiPath.FTP.csproj"      
+      versionReference: "FTPAssemblyInfo.cs"

@@ -14,4 +14,4 @@ jobs:
         - "AutoHotkey.Interop/AutoHotkey.Interop.csproj"
         - "UiPath.Script/UiPath.Script.csproj"
         - "UiPath.Script.Activities/UiPath.Script.Activities.csproj"
-
+      versionReference: "UiPath.Script.Activities.Design/Properties/AssemblyInfo.cs"

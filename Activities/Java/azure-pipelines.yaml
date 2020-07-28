@@ -15,4 +15,5 @@ jobs:
         - "UiPath.Java.Activities/UiPath.Java.Activities.csproj"
       testList: 
         - "UiPath.Java.Test/UiPath.Java.Test.csproj"
+      versionReference: "JavaPackageVersion.cs"
 
