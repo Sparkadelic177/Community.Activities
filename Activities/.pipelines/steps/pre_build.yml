@@ -1,5 +1,6 @@
 parameters:
   NuGetVersionSpec: "4.3.0"
+  rootPath: ""
   versionReference: ""
 
 steps:
@@ -8,8 +9,10 @@ steps:
   inputs:
     scriptType: "inlineScript"
     inlineScript: |
-      Write-Host ${{ parameters.versionReference }}
-      if (-not (Test-Path -Path  ${{ parameters.versionReference }} )) {
+      $versionReferenceFile = ${{ parameters.rootPath }}${{ parameters.versionReference }}
+      Write-Host $versionReferenceFile
+      if (-not (Test-Path -Path  $versionReferenceFile )) {
+          Write-Host "file $versionReferenceFile not found"
           $major = 1
           $minor = 0
       } else {
