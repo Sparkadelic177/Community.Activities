@@ -25,7 +25,7 @@ jobs:
   steps:
   - template: "../steps/pre_build.yml"
     parameters:
-      BuildProject: ${{ parameters.versionReference }}
+      versionReference: ${{ parameters.versionReference }}
 
   - template: "../steps/build.yml"
     parameters:
