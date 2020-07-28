@@ -8,6 +8,7 @@ steps:
   inputs:
     scriptType: "inlineScript"
     inlineScript: |
+      Write-Host ${{ parameters.versionReference }}
       if (-not (Test-Path -Path  ${{ parameters.versionReference }} )) {
           $major = 1
           $minor = 0
