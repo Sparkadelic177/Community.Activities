@@ -11,16 +11,17 @@ steps:
     inlineScript: |
       $versionReferenceFile = "${{ parameters.rootPath }}${{ parameters.versionReference }}"
       Write-Host "versionReferenceFile: $versionReferenceFile"
+
       if (-not (Test-Path -Path  $versionReferenceFile )) {
-          Write-Host "file $versionReferenceFile not found"
-          $major = 1
-          $minor = 0
+        Write-Host "file $versionReferenceFile not found"
+        $major = 1
+        $minor = 0
       } else {
         $vers = cat $versionReferenceFile|Select-String -Pattern AssemblyVersion|Select-String -NotMatch "^//.*AssemblyVersion"
-        Write-Output $vers
         $major = $vers.Line.split("(").split(".")[1].replace('"','')
         $minor = $vers.Line.split("(").split(".")[2] 
       }
+
       $now = Get-Date 
       $y2k = Get-Date -Year 2000 -Month 1 -Day 1 
       $build = [int]($now - $y2k).TotalDays 
