@@ -12,14 +12,22 @@ steps:
       $versionReferenceFile = "${{ parameters.rootPath }}${{ parameters.versionReference }}"
       Write-Host "versionReferenceFile: $versionReferenceFile"
 
+      $major = 1
+      $minor = 0
+
       if (-not (Test-Path -Path  $versionReferenceFile )) {
         Write-Host "file $versionReferenceFile not found"
-        $major = 1
-        $minor = 0
       } else {
-        $vers = cat $versionReferenceFile|Select-String -Pattern AssemblyVersion|Select-String -NotMatch "^//.*AssemblyVersion"
-        $major = $vers.Line.split("(").split(".")[1].replace('"','')
-        $minor = $vers.Line.split("(").split(".")[2] 
+        # select the version line, remove any comments 
+        $vers = cat $versionReferenceFile|Select-String -Pattern AssemblyVersion|Select-String -NotMatch "^//.*AssemblyVersion"|select -Last 1
+
+        $match =  $vers.Line.split("(").split(".")[1].replace('"','')
+        if (  $match -match "^\d*$" ){ $major = $match } 
+        else {  Write-Host "version major was not found" }
+        
+        $match =  $vers.Line.split("(").split(".")[2] 
+        if (  $match -match "^\d*$" ){ $minor = $match } 
+        else {  Write-Host "version minor was not found" }
       }
 
       $now = Get-Date 
